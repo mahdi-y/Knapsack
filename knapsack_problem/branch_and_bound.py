@@ -61,4 +61,11 @@ def branch_and_bound_knapsack(file_path):
             if u.bound > max_value:
                 heapq.heappush(queue, u)
 
-    return max_value
+    total_weight = sum(item[1] for item in best_items)
+    return {
+    'value': max_value,
+    'weight': total_weight,
+    'items_count': len(best_items),
+    'capacity': capacity,
+    'items': best_items
+}
