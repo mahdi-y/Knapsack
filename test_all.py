@@ -2,9 +2,11 @@ import time
 from branch_and_bound import branch_and_bound_knapsack
 from dynamic_programming import dynamic_programming_knapsack
 from greedy import greedy_knapsack
-from human_heuristic import human_heuristic_knapsack
+# from human_heuristic import human_heuristic_knapsack
 from profiling_utils import profile_function
 import matplotlib.pyplot as plt
+from genetic import genetic_knapsack
+
 
 FILE = "knapsack_realistic_3000.in"
 
@@ -41,9 +43,11 @@ def annotate_bars(ax, bars, fmt="{:.0f}"):
 if __name__ == "__main__":
     results = []
     results.append(run_test("Greedy", greedy_knapsack))
-    results.append(run_test("Human Heuristic", human_heuristic_knapsack))
+    # results.append(run_test("Human Heuristic", human_heuristic_knapsack))
     results.append(run_test("Dynamic Programming", dynamic_programming_knapsack))
     results.append(run_test("Branch and Bound", branch_and_bound_knapsack))
+    results.append(run_test("Genetic Algorithm", genetic_knapsack))
+
 
     # Extract data
     algorithms = [r['Algorithm'] for r in results]
