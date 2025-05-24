@@ -259,4 +259,7 @@ Feel free to extend this project by:
 
 [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This project is open source and available under the MIT License.
+This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for details.
+
+## Contact
+For questions, suggestions, or contributions, please open an issue or submit a pull request on GitHub.
