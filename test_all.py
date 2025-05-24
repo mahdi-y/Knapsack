@@ -2,7 +2,6 @@ import time
 from branch_and_bound import branch_and_bound_knapsack
 from dynamic_programming import dynamic_programming_knapsack
 from greedy import greedy_knapsack
-# from human_heuristic import human_heuristic_knapsack
 from profiling_utils import profile_function
 import matplotlib.pyplot as plt
 from genetic import genetic_knapsack
@@ -24,7 +23,7 @@ def run_test(name, func):
     return {
     'Algorithm': name,
     'Value': result['value'],
-    'Execution Time (s)': real_time,  # Now real elapsed time
+    'Execution Time (s)': real_time,  
     'Memory (MiB)': peak_memory,
     'Items Selected': result['items_count']
 }
@@ -36,20 +35,19 @@ def annotate_bars(ax, bars, fmt="{:.0f}"):
         height = bar.get_height()
         ax.annotate(fmt.format(height),
                     xy=(bar.get_x() + bar.get_width() / 2, height),
-                    xytext=(0, 3),  # Offset above the bar
+                    xytext=(0, 3),
                     textcoords="offset points",
                     ha='center', va='bottom', fontsize=9)
 
 if __name__ == "__main__":
     results = []
     results.append(run_test("Greedy", greedy_knapsack))
-    # results.append(run_test("Human Heuristic", human_heuristic_knapsack))
     results.append(run_test("Dynamic Programming", dynamic_programming_knapsack))
     results.append(run_test("Branch and Bound", branch_and_bound_knapsack))
     results.append(run_test("Genetic Algorithm", genetic_knapsack))
 
 
-    # Extract data
+    
     algorithms = [r['Algorithm'] for r in results]
     values = [r['Value'] for r in results]
     times = [r['Execution Time (s)'] for r in results]
@@ -60,7 +58,7 @@ if __name__ == "__main__":
 
     plt.figure(figsize=(18, 10))
 
-    # Total Value
+    
     ax1 = plt.subplot(2, 2, 1)
     bars1 = ax1.bar(x, values, color='skyblue')
     ax1.set_title("Total Value Achieved")
@@ -69,7 +67,7 @@ if __name__ == "__main__":
     ax1.set_ylabel("Value")
     annotate_bars(ax1, bars1)
 
-    # Execution Time
+    
     ax2 = plt.subplot(2, 2, 2)
     bars2 = ax2.bar(x, times, color='orange')
     ax2.set_title("Elapsed Time")
@@ -78,7 +76,7 @@ if __name__ == "__main__":
     ax2.set_ylabel("Time (s)")
     annotate_bars(ax2, bars2, fmt="{:.4f}")
 
-    # Items Selected
+    
     ax3 = plt.subplot(2, 2, 3)
     bars3 = ax3.bar(x, items_selected, color='purple')
     ax3.set_title("Number of Items Selected")
@@ -87,7 +85,7 @@ if __name__ == "__main__":
     ax3.set_ylabel("Item Count")
     annotate_bars(ax3, bars3)
 
-    # Memory Usage
+    
     ax4 = plt.subplot(2, 2, 4)
     bars4 = ax4.bar(x, memory, color='green')
     ax4.set_title("Peak Memory Usage")
